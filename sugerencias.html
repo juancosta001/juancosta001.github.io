@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugerencias</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Dancing+Script&family=Lobster&family=Lobster+Two&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="shortcut icon" href="img/logo-final-sin-fondo.png">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+     (function(){
+      emailjs.init("2CNAEjj6Re-HNWHDZ");
+    })();
+    </script>
+    <script src="js/cargarAnimacion.js"></script>
+
+</head>
+<body>
+  <header>
+    <nav>
+        <div class="boton-mas">
+          <button id="desplegar-menu">
+            <img src="img/asdasd.png" alt="Tres puntos">
+          </button>
+        </div>
+        <div class="texto-medio">
+          <a href="index.html" class="animate__animated animate__bounceInDown animar">Resto Bar JMF</a>
+        </div>
+          <div class="logo-nav">
+            <img src="img/logo-final-sin-fondo.png" alt="Logo del bar">
+          </div>
+          <div class="menu-desplegable">
+            <ul>
+              <a href="galeria-imagenes.html">Galería de Imagenes</a>
+              <a href="servicios.html">Servicios</a>
+              <a href="sugerencias.html">Sugerencias</a>
+              <a href="integrantes.html">Integrantes</a>
+            </ul>
+          </div>
+    </nav>
+    </header>
+    <section id="sugerencias">
+      <div class="imagen-fondo">
+        <img src="img/fondo-catalogo.webp" alt="">
+      </div>
+    <div class="contact_form">
+      <div class="formulario">
+          <h2>Sugerencias</h2>
+          <h3>Aquí puedes dejar tu sugerencia:</h3>
+
+          <form id="sugerencia-form">
+              <p>
+                  <label for="nombre" class="colocar_nombre">Nombre
+                      <span class="obligatorio">*</span>
+                  </label>
+                  <input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
+              </p>
+
+              <p>
+                  <label for="email" class="colocar_email">Email
+                      <span class="obligatorio">*</span>
+                  </label>
+                  <input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
+              </p>
+
+              <p>
+                  <label for="mensaje" class="colocar_mensaje">Mensaje
+                      <span class="obligatorio">*</span>
+                  </label>
+                  <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea>
+              </p>
+
+              <button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+
+              <p class="aviso">
+                  <span class="obligatorio"> * </span>los campos son obligatorios.
+              </p>
+
+          </form>
+      </div>
+  </div>
+    
+  <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Sugerencia enviada</h3>
+        <p>Tu sugerencia ha sido enviada correctamente. ¡Gracias!</p>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('sugerencia-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe por defecto
+
+            // Obtén los valores del formulario
+            var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
+            var mensaje = document.getElementById('mensaje').value;
+
+            // Envía el formulario utilizando EmailJS
+            emailjs.send('default_service', 'template_2jcaq7x', {
+                from_name: nombre,
+                message: mensaje,
+                email_id: email
+            })
+            .then(function(response) {
+                // Muestra el modal de éxito
+                var modal = document.getElementById('modal');
+                modal.style.display = 'block';
+
+                // Acciones adicionales después de enviar el formulario
+                console.log('ID del envío:', response.text);
+
+                // Reinicia el formulario
+                document.getElementById('sugerencia-form').reset();
+            })
+            .catch(function(error) {
+                alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente más tarde.');
+                console.log('Error:', error);
+            });
+        });
+
+        // Cierra el modal al hacer clic en la "x"
+        var closeBtn = document.querySelector('.close');
+        closeBtn.addEventListener('click', function() {
+            var modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        });
+    };
+</script>
+
+
+        <footer  id="pie">
+          <div class="container__footer">
+              <div class="box__footer">
+                  <a href="index.html" class="logo" >
+                      <img src="img/logo-final-sin-fondo.png" alt="">
+                    </a>
+                  <div class="terms">
+                      <p><b>
+                         Sabor y calidad en cada plato. Gracias por elegirnos.
+                        </b></p>
+                  </div>
+              </div>
+        
+             
+        
+              <div class="box__footer">
+                  <h2>Temas de Interés</h2>
+                  <a href="index.html"><u>Inicio</u></a>
+                  <a href="galeria-imagenes.html"><u>Galería de Imágenes</u></a>
+                  <a href="servicios.html"><u>Servicios que ofrecemos</u></a>
+                  <a href="sugerencias.html"><u>Envía una sugerencia</u></a>
+              </div>
+              
+              <div class="box__footer">
+                  <h2>Redes Sociales</h2>
+                  <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
+                  <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
+                  <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
+              </div>
+        
+              <div class="box__footer">
+                <h2>Contactenos</h2>
+                <a href="#">restobarjmf@gmail.com</a>
+                <a href="#"> +595 972-905-982</a>
+            </div>
+        
+          </div>
+        
+          <div class="box__copyright">
+              <hr>
+              <p>Todos los derechos reservados © 2023 <b>RestobarJMF</b></p>
+          </div>
+        
+        </footer>
+        <script src="js/script.js"></script>
+
+
+
+
+</body>
+</html>
