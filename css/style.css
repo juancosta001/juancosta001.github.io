@@ -717,7 +717,7 @@ nav .boton-mas button img {
   justify-content: end;
 }
 .container-carrusel .imagenes img {
-  max-width: 1134px;
+  max-width: 1920px;
   max-height: 576px;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.85);
   height: 100%;
@@ -803,10 +803,12 @@ nav .boton-mas button img {
   background-color: transparent;
   border: none;
   outline: none;
+  z-index: 2;
 }
 .container-carrusel .adelante img,
 .container-carrusel .atras img {
   height: 100px;
+  z-index: 2;
 }
 .container-carrusel .adelante {
   right: 0;
@@ -1090,7 +1092,7 @@ nav .boton-mas button img {
   position: relative;
   top: 160px;
   display: flex;
-  flex-direction: column; /* Cambia a columna para apilar verticalmente */
+  flex-direction: column; 
   padding-bottom: 300px;
   margin: 0 auto;
   align-items: center;
@@ -1109,7 +1111,7 @@ nav .boton-mas button img {
   flex-grow: 1;
   height: 350px;
   display: flex; ; 
-  margin-bottom: 35px; /* Agregar un margen entre las personas */
+  margin-bottom: 35px; 
   background-color: #8c6e5b;
   border-radius: 30px;
   border: 1px solid;
@@ -1128,10 +1130,12 @@ nav .boton-mas button img {
 .nosotros .container-curriculum .persona .marcos_martinez {
   justify-content: flex-end;
 }
+
 .nosotros .container-curriculum .persona .imagen-cara-marcos img {
  margin-top: 20px;
   width: 300px;
 }
+
 /*FOOTER */
 footer {
   font-family: 'Roboto', sans-serif;
