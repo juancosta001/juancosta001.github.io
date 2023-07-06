@@ -71,13 +71,13 @@ function preloadCarouselImages() {
 let imagenes = [
   {
     "url": "img/carrusel/imagen2.webp",
-    "nombre": "Ambiente",
-    "descripcion": "Sumérgete en el cálido abrazo de nuestro restobar, donde la diversión y la camaradería crean recuerdos inolvidables"
+    "nombre": "Amplio Menú",
+    "descripcion": "Explora un mundo de sabores en nuestro menú. Delicias gastronómicas que te sorprenderán."
   },
   {
-    "url": "img/carrusel/imagen3.webp",
-    "nombre": "Métodos de Pago",
-    "descripcion": "Abre un mundo de posibilidades para pagar en nuestro restobar. Descubre la libertad de elegir entre múltiples métodos de pago y disfruta de una experiencia sin límites"
+    "url": "img/carrusel/imagen6.webp",
+    "nombre": "Océano de Sabores",
+    "descripcion": "Sumérgete en un océano de sabores: Nuestra carta de cervezas y cócteles te espera para deleitar tus sentidos"
   },
   {
     "url": "img/carrusel/imagen4.webp",
@@ -90,14 +90,14 @@ let imagenes = [
     "descripcion": "La combinación perfecta: Cerveza helada y atención excepcional. En nuestro restobar, vivirás una experiencia refrescante y única"
   },
   {
-    "url": "img/carrusel/imagen6.webp",
-    "nombre": "Variedad",
-    "descripcion": "De lo mejor en cerveza a lo más exquisito en café. Descubre la versatilidad de nuestro restobar, donde satisfacemos todos tus antojos en un solo lugar."
+    "url": "img/carrusel/imagen3.webp",
+    "nombre": "Métodos de Pago",
+    "descripcion": "Abre un mundo de posibilidades para pagar en nuestro restobar. Descubre la libertad de elegir entre múltiples métodos de pago y disfruta de una experiencia sin límites"
   },
   {
     "url": "img/carrusel/imagen7.webp",
-    "nombre": "Comidas",
-    "descripcion": "Desde la frescura de la cerveza hasta la delicia de la gastronomía. Disfruta de una experiencia completa en nuestro restobar, donde cada bocado es un placer para tu paladar."
+    "nombre": "Ambiente",
+    "descripcion": "Sumérgete en el cálido abrazo de nuestro restobar, donde la diversión y la camaradería crean recuerdos inolvidables"
   }
 ];
 
@@ -181,31 +181,43 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.includes('galeria-imagenes.html')) {
+    if (document.querySelector('.carrusel')) {
+      $(".carrusel").swipe({
+        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === "left") {
+            detenerCarrusel();
+            cambiarImagen(1); // Cambiar a la imagen siguiente
+            iniciarCarrusel();
+          } else if (direction === "right") {
+            detenerCarrusel();
+            cambiarImagen(-1); // Cambiar a la imagen anterior
+            iniciarCarrusel();
+          }
+        }
+      });
+    }
+  }
+});
+
+
 window.onload = function() {
   document.getElementById('sugerencia-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe por defecto
-
-      // Obtén los valores del formulario
+      event.preventDefault();  // Obtén los valores del formulario
       var nombre = document.getElementById('nombre').value;
       var email = document.getElementById('email').value;
       var mensaje = document.getElementById('mensaje').value;
-
-      // Envía el formulario utilizando EmailJS
-      emailjs.send('default_service', 'template_2jcaq7x', {
+      emailjs.send('default_service', 'template_2jcaq7x', { // Envía el formulario utilizando EmailJS
           from_name: nombre,
           message: mensaje,
           email_id: email
       })
-      .then(function(response) {
-          // Muestra el modal de éxito
+      .then(function(response) { // Muestra el modal de éxito
           var modal = document.getElementById('modal');
           modal.style.display = 'block';
-
-          // Acciones adicionales después de enviar el formulario
-          console.log('ID del envío:', response.text);
-
-          // Reinicia el formulario
-          document.getElementById('sugerencia-form').reset();
+          console.log('ID del envío:', response.text); // Acciones adicionales después de enviar el formulario
+          document.getElementById('sugerencia-form').reset(); // Reinicia el formulario
       })
       .catch(function(error) {
           alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente más tarde.');
