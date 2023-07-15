@@ -1135,7 +1135,6 @@ nav .boton-mas button img {
  margin-top: 20px;
   width: 300px;
 }
-
 /*FOOTER */
 footer {
   font-family: 'Roboto', sans-serif;
@@ -1202,7 +1201,7 @@ footer {
 .box__copyright p {
   font-size: 25px;
   margin-top: 20px;
-  color: #47031c;
+  color: #fefefe;
 }
 .box__copyright hr {
   border: none;
